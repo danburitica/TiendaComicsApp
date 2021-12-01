@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1011542165276",
+    "project_id": "tiendacomicsapp",
+    "storage_bucket": "tiendacomicsapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1011542165276:android:95bf8f0815fa8153d8dcd9",
+        "android_client_info": {
+          "package_name": "com.tiendacomics20"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1011542165276-lamqacok3o520stslkaptdrvpc18gquc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tiendacomics20",
+            "certificate_hash": "a224e7af8f2d7cd4357caf512701af8dafe124a7"
+          }
+        },
+        {
+          "client_id": "1011542165276-9donj105erlmauj9ss5jcrrrp4d31vj8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwsHPQAR4Fk8E_dtQGYNdp1z0oA2y_tp4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1011542165276-9donj105erlmauj9ss5jcrrrp4d31vj8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
