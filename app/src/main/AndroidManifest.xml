@@ -10,10 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TiendaComicsApp">
         <activity
-            android:name=".activities.SplashActivity"
+            android:name=".ui.activities.LoginActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.TiendaComicsApp.NoActionBar"
-            android:exported="true" >
+            android:theme="@style/Theme.TiendaComicsApp.NoActionBar"/>
+        <activity
+            android:name=".ui.activities.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.TiendaComicsApp.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,9 +26,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.MainActivity"
-            android:exported="true">
-        </activity>
+            android:name=".ui.activities.MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

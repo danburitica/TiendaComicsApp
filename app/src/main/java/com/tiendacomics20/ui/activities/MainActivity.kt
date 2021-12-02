@@ -1,4 +1,4 @@
-package com.tiendacomics20.activities
+package com.tiendacomics20.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
