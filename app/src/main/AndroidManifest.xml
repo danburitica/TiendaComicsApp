@@ -10,10 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TiendaComicsApp">
         <activity
-            android:name=".ui.activities.LoginActivity"
+            android:name=".ui.activities.RegisterActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.TiendaComicsApp.NoActionBar"/>
+        <activity
+            android:name=".ui.activities.LoginActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.TiendaComicsApp.NoActionBar" />
         <activity
             android:name=".ui.activities.SplashActivity"
             android:exported="true"
@@ -28,7 +33,7 @@
         <activity
             android:name=".ui.activities.MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
