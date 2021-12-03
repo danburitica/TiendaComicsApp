@@ -11,4 +11,7 @@
 
     <color name="colorThemeLightRed">#F22E2E</color>
     <color name="colorThemeDarkRed">#59202B</color>
+
+    <color name="colorSnackBarSuccess">#8BC34A</color>
+    <color name="colorSnackBarError">#F72400</color>
 </resources>

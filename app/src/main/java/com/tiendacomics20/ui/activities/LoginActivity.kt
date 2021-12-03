@@ -23,8 +23,8 @@ class LoginActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
-        val textView = findViewById<TextView>(R.id.tv_register) as TextView
-        textView?.setOnClickListener {
+        val textView = findViewById<TextView>(R.id.tv_register)
+        textView.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }

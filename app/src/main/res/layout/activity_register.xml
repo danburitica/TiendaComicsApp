@@ -9,12 +9,8 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_register_activity"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/white"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -27,9 +23,7 @@
             android:paddingEnd="0dp"
             android:text="Registrarse"
             android:textColor="@color/black"
-            android:textSize="35sp"
-            tools:layout_editor_absoluteX="108dp"
-            tools:layout_editor_absoluteY="16dp" />
+            android:textSize="35sp" />
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
@@ -118,7 +112,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:inputType="text"
+                    android:inputType="textEmailAddress"
                     android:padding="12dp"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -144,8 +138,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:inputType="text"
                     android:padding="12dp"
+                    android:inputType="textPassword"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -170,7 +164,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:inputType="text"
+                    android:inputType="textPassword"
                     android:padding="12dp"
                     android:textColor="@color/black"
                     android:textSize="20sp"
