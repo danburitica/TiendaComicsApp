@@ -93,11 +93,13 @@ class RegisterActivity : BaseActivity() {
 
     private fun registerUser(){
         if (validateRegisterDetails()) {
+            showProgressDialog("Por favor espera...")
             val email: String = findViewById<EditText>(R.id.et_email_register).text.toString().trim {it <= ' '}
             val password: String = findViewById<EditText>(R.id.et_password_register).text.toString().trim {it <= ' '}
 
             Firebase.auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
+                        hideProgressDialog()
                         if (task.isSuccessful){
                             showErrorSnackBar("¡Su Registro fue exitoso!", false)
                         }else{
