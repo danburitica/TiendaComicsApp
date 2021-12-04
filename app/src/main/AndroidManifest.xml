@@ -10,14 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TiendaComicsApp">
         <activity
+            android:name=".ui.activities.ForgotPasswordActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ui.activities.LoginActivity"
+            android:theme="@style/Theme.TiendaComicsApp.NoActionBar"/>
+        <activity
             android:name=".ui.activities.BaseActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activities.RegisterActivity"
             android:exported="false"
+            android:parentActivityName=".ui.activities.LoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.TiendaComicsApp.NoActionBar"
-            android:parentActivityName="com.tiendacomics20.ui.activities.LoginActivity"/>
+            android:theme="@style/Theme.TiendaComicsApp.NoActionBar" />
         <activity
             android:name=".ui.activities.LoginActivity"
             android:exported="false"
@@ -30,7 +36,6 @@
             android:theme="@style/Theme.TiendaComicsApp.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

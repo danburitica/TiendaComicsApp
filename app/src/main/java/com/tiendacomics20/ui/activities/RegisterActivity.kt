@@ -46,6 +46,7 @@ class RegisterActivity : BaseActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_black_color_back_24)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
     }
 
     private fun validateRegisterDetails(): Boolean {
