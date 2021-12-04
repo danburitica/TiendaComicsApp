@@ -22,21 +22,22 @@
             android:src="@drawable/logo" />
     </FrameLayout>
 
-    <com.tiendacomics20.utils.TCTextViewBold
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="111dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="111dp"
-        android:text="Iniciar Sesión"
-        android:textColor="@color/black"
-        android:textSize="35sp"
-        app:layout_constraintBottom_toTopOf="@+id/til_email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fl_header_image" />
+        <com.tiendacomics20.utils.TCTextViewBold
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="111dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="111dp"
+            android:layout_marginBottom="40dp"
+            android:text="Iniciar Sesión"
+            android:textColor="@color/black"
+            android:textSize="35sp"
+            app:layout_constraintBottom_toTopOf="@+id/til_email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fl_header_image" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_email"

@@ -33,8 +33,7 @@ class RegisterActivity : BaseActivity() {
 
         val textView = findViewById<TextView>(R.id.tv_login)
         textView.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+            onBackPressed()
         }
 
         findViewById<Button>(R.id.btn_register).setOnClickListener {
@@ -102,6 +101,8 @@ class RegisterActivity : BaseActivity() {
                         hideProgressDialog()
                         if (task.isSuccessful){
                             showErrorSnackBar("¡Su Registro fue exitoso!", false)
+                            Firebase.auth.signOut()
+                            finish()
                         }else{
                             showErrorSnackBar(task.exception!!.message.toString(), true)
                         }
