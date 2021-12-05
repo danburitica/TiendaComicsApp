@@ -5,6 +5,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
@@ -14,6 +15,8 @@ import android.widget.TextView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.tiendacomics20.R
+import com.tiendacomics20.firestore.FirestoreClass
+import com.tiendacomics20.models.User
 import org.w3c.dom.Text
 
 class LoginActivity : BaseActivity(), View.OnClickListener {
@@ -84,14 +87,25 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
             Firebase.auth.signInWithEmailAndPassword(email,password)
                 .addOnCompleteListener { task ->
-                    hideProgressDialog()
 
                     if (task.isSuccessful) {
-                        showErrorSnackBar("¡Has iniciado sesión con éxito!", false)
+                        FirestoreClass().getUserDetails(this)
                     } else {
+                        hideProgressDialog()
                         showErrorSnackBar(task.exception!!.message.toString(), true)
                     }
                 }
         }
+    }
+
+    fun userLoggedInSuccess(user: User){
+        hideProgressDialog()
+
+        Log.i("Nombre: ", user.firstName)
+        Log.i("Apellido: ", user.lastName)
+        Log.i("Email: ", user.email)
+
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 }

@@ -6,13 +6,13 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.WindowInsets
 import android.view.WindowManager
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.tiendacomics20.R
+import com.tiendacomics20.firestore.FirestoreClass
+import com.tiendacomics20.models.User
 
 class RegisterActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -99,15 +99,36 @@ class RegisterActivity : BaseActivity() {
 
             Firebase.auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
-                        hideProgressDialog()
+
                         if (task.isSuccessful){
-                            showErrorSnackBar("¡Su Registro fue exitoso!", false)
-                            Firebase.auth.signOut()
-                            finish()
+                            val firebaseUser: FirebaseUser = task.result!!.user!!
+
+                            val user = User(
+                                firebaseUser.uid,
+                                findViewById<EditText>(R.id.et_name_register).text.toString().trim {it <= ' '},
+                                findViewById<EditText>(R.id.et_lastname_register).text.toString().trim {it <= ' '},
+                                findViewById<EditText>(R.id.et_email_register).text.toString().trim {it <= ' '}
+                            )
+
+                            FirestoreClass().registerUser(this, user)
+
+                            //Firebase.auth.signOut()
+                            //finish()
                         }else{
+                            hideProgressDialog()
                             showErrorSnackBar(task.exception!!.message.toString(), true)
                         }
                     }
         }
+    }
+
+    fun userRegistrationSuccess(){
+        hideProgressDialog()
+
+        Toast.makeText(
+            this,
+            "¡Su registro fue exitoso!",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }
