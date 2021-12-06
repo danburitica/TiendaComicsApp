@@ -11,6 +11,7 @@ import com.google.firebase.ktx.Firebase
 import com.tiendacomics20.models.User
 import com.tiendacomics20.ui.activities.LoginActivity
 import com.tiendacomics20.ui.activities.RegisterActivity
+import com.tiendacomics20.ui.activities.UserProfileActivity
 import com.tiendacomics20.utils.Constants
 
 class FirestoreClass {
@@ -82,6 +83,32 @@ class FirestoreClass {
                 Log.e(
                     activity.javaClass.simpleName,
                     "Ocurrió un error obteniendo los datos del usuario :(",
+                    e
+                )
+            }
+    }
+
+    fun updateUserProfileData(activity: Activity, userHashMap: HashMap<String, Any>){
+        mFireStore.collection(Constants.USERS)
+            .document(getCurrentUserID())
+            .update(userHashMap)
+            .addOnSuccessListener {
+                when (activity) {
+                    is UserProfileActivity -> {
+                        activity.userProfileUpdateSuccess()
+                    }
+                }
+            }
+            .addOnFailureListener { e->
+                when (activity) {
+                    is UserProfileActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                }
+
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Ocurrió un error mientras se cargaban los detalles del usuario",
                     e
                 )
             }

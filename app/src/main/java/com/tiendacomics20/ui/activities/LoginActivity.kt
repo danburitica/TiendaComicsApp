@@ -17,6 +17,7 @@ import com.google.firebase.ktx.Firebase
 import com.tiendacomics20.R
 import com.tiendacomics20.firestore.FirestoreClass
 import com.tiendacomics20.models.User
+import com.tiendacomics20.utils.Constants
 import org.w3c.dom.Text
 
 class LoginActivity : BaseActivity(), View.OnClickListener {
@@ -105,7 +106,13 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         Log.i("Apellido: ", user.lastName)
         Log.i("Email: ", user.email)
 
-        startActivity(Intent(this, MainActivity::class.java))
+        if (user.profileCompleted == 0){
+            val intent = Intent(this, UserProfileActivity::class.java)
+            intent.putExtra(Constants.EXTRA_USER_DETAILS, user)
+            startActivity(intent)
+        }else{
+            startActivity(Intent(this, MainActivity::class.java))
+        }
         finish()
     }
 }
