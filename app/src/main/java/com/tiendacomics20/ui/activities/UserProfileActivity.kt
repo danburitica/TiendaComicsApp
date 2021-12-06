@@ -104,6 +104,8 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
             userHashMap[Constants.ADDRESS] = address
         }
 
+        userHashMap[Constants.COMPLETE_PROFILE] = 1
+
         FirestoreClass().updateUserProfileData(this, userHashMap)
     }
 

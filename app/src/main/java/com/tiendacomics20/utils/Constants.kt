@@ -18,6 +18,7 @@ object Constants {
     const val ADDRESS: String = "address"
     //User Column
     const val IMAGE: String ="image"
+    const val COMPLETE_PROFILE = "profileCompleted"
 
     //Cloud Storage
     const val USER_PROFILE_IMAGE: String = "User_Profile_Image"
