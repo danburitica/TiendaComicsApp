@@ -50,18 +50,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/iv_user_photo"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:contentDescription="user image"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_user_placeholder" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/user_image_background" />
+                    android:src="@drawable/ic_user_placeholder"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="@color/secondaryDarkColor"/>
             </FrameLayout>
 
             <com.google.android.material.textfield.TextInputLayout
