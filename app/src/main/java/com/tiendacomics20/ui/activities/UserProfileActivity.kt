@@ -26,6 +26,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
     private lateinit var mUserDetails: User
     private var mSelectedImageFileUri: Uri? = null
+    private var mUserProfileImageURL: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,42 +74,37 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
                 R.id.btn_save_user_profile -> {
 
-                    showProgressDialog("Por favor espera...")
-
-                    FirestoreClass().uploadImageToCloudStorage(this, mSelectedImageFileUri)
-
                     if (validateUserProfileDetails()) {
-
-                        val userHashMap = HashMap<String, Any>()
-                        val mobileNumber = et_mobile_user_profile.text.toString().trim { it <= ' ' }
-                        val address = et_address_user_profile.text.toString().trim { it <= ' ' }
-
-                        if (mobileNumber.isNotEmpty()){
-                            userHashMap[Constants.MOBILE] = mobileNumber.toLong()
-                        }
-                        if (address.isNotEmpty()) {
-                            userHashMap[Constants.ADDRESS] = address
-                        }
-
                         showProgressDialog("Por favor espera...")
 
-                        FirestoreClass().updateUserProfileData(this, userHashMap)
-
-                        /*if (mSelectedImageFileUri != null) {
-
-                            FirestoreClass().uploadImageToCloudStorage(
-                                this@UserProfileActivity,
-                                mSelectedImageFileUri,
-                                Constants.USER_PROFILE_IMAGE
-                            )
-                        } else {
-
+                        if (mSelectedImageFileUri != null)
+                            FirestoreClass().uploadImageToCloudStorage(this, mSelectedImageFileUri)
+                        else{
                             updateUserProfileDetails()
-                        }*/
+                        }
                     }
                 }
             }
         }
+    }
+
+    private fun updateUserProfileDetails(){
+        val userHashMap = HashMap<String, Any>()
+        val mobileNumber = et_mobile_user_profile.text.toString().trim { it <= ' ' }
+        val address = et_address_user_profile.text.toString().trim { it <= ' ' }
+
+        if (mUserProfileImageURL.isNotEmpty()){
+            userHashMap[Constants.IMAGE] = mUserProfileImageURL
+        }
+
+        if (mobileNumber.isNotEmpty()){
+            userHashMap[Constants.MOBILE] = mobileNumber.toLong()
+        }
+        if (address.isNotEmpty()) {
+            userHashMap[Constants.ADDRESS] = address
+        }
+
+        FirestoreClass().updateUserProfileData(this, userHashMap)
     }
 
     fun userProfileUpdateSuccess(){
@@ -181,12 +177,8 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
-    fun imageUploadSuccess(){
-        hideProgressDialog()
-        Toast.makeText(
-            this,
-            "¡Tu imagen fue cargada con éxito!",
-            Toast.LENGTH_SHORT
-        ).show()
+    fun imageUploadSuccess(imageURL: String){
+        mUserProfileImageURL = imageURL
+        updateUserProfileDetails()
     }
 }

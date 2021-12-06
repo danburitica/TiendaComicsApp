@@ -137,7 +137,7 @@ class FirestoreClass {
                     Log.e("URL Imagen Descargable", uri.toString())
                     when(activity) {
                         is UserProfileActivity -> {
-                            activity.imageUploadSuccess()
+                            activity.imageUploadSuccess(uri.toString())
                         }
                     }
                 }
