@@ -3,16 +3,20 @@ package com.tiendacomics20.firestore
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
+import android.net.Uri
 import android.util.Log
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
 import com.tiendacomics20.models.User
 import com.tiendacomics20.ui.activities.LoginActivity
 import com.tiendacomics20.ui.activities.RegisterActivity
 import com.tiendacomics20.ui.activities.UserProfileActivity
 import com.tiendacomics20.utils.Constants
+import java.net.URI
 
 class FirestoreClass {
 
@@ -112,5 +116,44 @@ class FirestoreClass {
                     e
                 )
             }
+    }
+
+    fun uploadImageToCloudStorage(activity: Activity, imageFileURI: Uri?){
+        val sRef: StorageReference = Firebase.storage.reference.child(
+            Constants.USER_PROFILE_IMAGE + System.currentTimeMillis() + "."
+                    + Constants.getFileExtension(
+                    activity,
+                    imageFileURI
+                    )
+        )
+        sRef.putFile(imageFileURI!!).addOnSuccessListener { taskSnapshot ->
+            Log.e(
+                "URL Imagen Firebase",
+                taskSnapshot.metadata!!.reference!!.downloadUrl.toString()
+            )
+
+            taskSnapshot.metadata!!.reference!!.downloadUrl
+                .addOnSuccessListener { uri ->
+                    Log.e("URL Imagen Descargable", uri.toString())
+                    when(activity) {
+                        is UserProfileActivity -> {
+                            activity.imageUploadSuccess()
+                        }
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    when(activity) {
+                        is UserProfileActivity -> {
+                            activity.hideProgressDialog()
+                        }
+                    }
+
+                    Log.e(
+                        activity.javaClass.simpleName,
+                        exception.message,
+                        exception
+                    )
+                }
+        }
     }
 }

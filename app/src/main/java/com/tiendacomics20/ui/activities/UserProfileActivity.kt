@@ -25,6 +25,7 @@ import java.io.IOException
 class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
     private lateinit var mUserDetails: User
+    private var mSelectedImageFileUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,6 +72,10 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
                 }
 
                 R.id.btn_save_user_profile -> {
+
+                    showProgressDialog("Por favor espera...")
+
+                    FirestoreClass().uploadImageToCloudStorage(this, mSelectedImageFileUri)
 
                     if (validateUserProfileDetails()) {
 
@@ -146,9 +151,9 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
             if (requestCode == Constants.PICK_IMAGE_REQUEST_CODE) {
                 if (data != null) {
                     try {
-                        val selectedImageFileUri = data.data!!
+                        mSelectedImageFileUri = data.data!!
 
-                        GlideLoader(this).loadUserPicture(selectedImageFileUri, iv_user_photo)
+                        GlideLoader(this).loadUserPicture(mSelectedImageFileUri!!, iv_user_photo)
                     } catch (e: IOException) {
                         e.printStackTrace()
                         Toast.makeText(
@@ -174,5 +179,14 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
                 true
             }
         }
+    }
+
+    fun imageUploadSuccess(){
+        hideProgressDialog()
+        Toast.makeText(
+            this,
+            "¡Tu imagen fue cargada con éxito!",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }
