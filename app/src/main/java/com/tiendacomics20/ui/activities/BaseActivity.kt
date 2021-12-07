@@ -3,7 +3,9 @@ package com.tiendacomics20.ui.activities
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
@@ -11,6 +13,7 @@ import com.tiendacomics20.R
 
 open class BaseActivity : AppCompatActivity() {
 
+    private var doubleBackToExitPressedOnce = false
     private lateinit var mProgressDialog: Dialog
 
     fun showErrorSnackBar(message: String, errorMessage: Boolean) {
@@ -45,5 +48,24 @@ open class BaseActivity : AppCompatActivity() {
 
     fun hideProgressDialog() {
         mProgressDialog.dismiss()
+    }
+
+    fun doubleBackToExit() {
+
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+
+        Toast.makeText(
+            this,
+            "Por favor presiona 'atrás' nuevamente para salir de la aplicación",
+            Toast.LENGTH_SHORT
+        ).show()
+
+        @Suppress("DEPRECATION")
+        Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 }

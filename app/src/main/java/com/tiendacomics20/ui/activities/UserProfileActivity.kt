@@ -98,7 +98,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         }
 
         if (mobileNumber.isNotEmpty()){
-            userHashMap[Constants.MOBILE] = mobileNumber.toLong()
+            userHashMap[Constants.MOBILE] = mobileNumber
         }
         if (address.isNotEmpty()) {
             userHashMap[Constants.ADDRESS] = address

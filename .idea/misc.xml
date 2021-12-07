@@ -6,8 +6,13 @@
         <entry key="../../../../layout/custom_preview.xml" value="0.3312820512820513" />
         <entry key="app/src/main/res/drawable/app_gradient_color_background.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/button_background.xml" value="0.321025641025641" />
+        <entry key="app/src/main/res/drawable/ic_baseline_explore_24.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/ic_black_color_back_24.xml" value="0.2984375" />
+        <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.2984375" />
+        <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.2984375" />
+        <entry key="app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/user_image_background.xml" value="0.2984375" />
+        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.275" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.28229166666666666" />
@@ -15,6 +20,7 @@
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.275" />
         <entry key="app/src/main/res/layout/dialog_progress.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.28229166666666666" />
       </map>
     </option>
   </component>
