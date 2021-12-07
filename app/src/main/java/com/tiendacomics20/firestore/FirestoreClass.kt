@@ -11,10 +11,12 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
+import com.tiendacomics20.models.Product
 import com.tiendacomics20.models.User
 import com.tiendacomics20.ui.activities.LoginActivity
 import com.tiendacomics20.ui.activities.RegisterActivity
 import com.tiendacomics20.ui.activities.UserProfileActivity
+import com.tiendacomics20.ui.fragments.AddProductActivity
 import com.tiendacomics20.utils.Constants
 import java.net.URI
 
@@ -118,9 +120,9 @@ class FirestoreClass {
             }
     }
 
-    fun uploadImageToCloudStorage(activity: Activity, imageFileURI: Uri?){
+    fun uploadImageToCloudStorage(activity: Activity, imageFileURI: Uri?, imageType: String){
         val sRef: StorageReference = Firebase.storage.reference.child(
-            Constants.USER_PROFILE_IMAGE + System.currentTimeMillis() + "."
+            imageType + System.currentTimeMillis() + "."
                     + Constants.getFileExtension(
                     activity,
                     imageFileURI
@@ -139,11 +141,17 @@ class FirestoreClass {
                         is UserProfileActivity -> {
                             activity.imageUploadSuccess(uri.toString())
                         }
+                        is AddProductActivity -> {
+                            activity.imageUploadSuccess(uri.toString())
+                        }
                     }
                 }
                 .addOnFailureListener { exception ->
                     when(activity) {
                         is UserProfileActivity -> {
+                            activity.hideProgressDialog()
+                        }
+                        is AddProductActivity -> {
                             activity.hideProgressDialog()
                         }
                     }
@@ -155,5 +163,22 @@ class FirestoreClass {
                     )
                 }
         }
+    }
+
+    fun uploadProductDetails(activity: AddProductActivity, productInfo: Product){
+        mFireStore.collection(Constants.PRODUCTS)
+            .document()
+            .set(productInfo, SetOptions.merge())
+            .addOnSuccessListener {
+                activity.productUploadSuccess()
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Ocurrió un error mientras se cargaba el producto",
+                    e
+                )
+            }
     }
 }

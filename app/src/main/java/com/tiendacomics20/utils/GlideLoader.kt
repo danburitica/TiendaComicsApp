@@ -22,7 +22,7 @@ class GlideLoader(val context: Context) {
         }
     }
 
-    /*fun loadProductPicture(image: Any, imageView: ImageView) {
+    fun loadProductPicture(image: Any, imageView: ImageView) {
         try {
             Glide
                 .with(context)
@@ -32,5 +32,5 @@ class GlideLoader(val context: Context) {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-    }*/
+    }
 }

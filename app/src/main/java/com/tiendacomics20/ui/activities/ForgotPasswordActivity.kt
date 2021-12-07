@@ -34,7 +34,7 @@ class ForgotPasswordActivity : BaseActivity() {
         setSupportActionBar(findViewById(R.id.toolbar_forgot_password_activity))
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_black_color_back_24)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_24)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
         findViewById<Button>(R.id.btn_submit).setOnClickListener {

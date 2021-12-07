@@ -7,7 +7,10 @@ import android.provider.MediaStore
 import android.webkit.MimeTypeMap
 
 object Constants {
+    //Collections in Firebase
     const val USERS: String = "users"
+    const val PRODUCTS: String = "products"
+
     const val TIENDACOMICS_PREFERENCES: String = "TiendaComicsPrefs"
     const val LOGGED_IN_USERNAME: String = "logged_in_username"
     const val EXTRA_USER_DETAILS: String = "extra_user_details"
@@ -19,6 +22,8 @@ object Constants {
     //User Column
     const val IMAGE: String ="image"
     const val COMPLETE_PROFILE = "profileCompleted"
+
+    const val PRODUCT_IMAGE: String = "Product_Image"
 
     //Cloud Storage
     const val USER_PROFILE_IMAGE: String = "User_Profile_Image"

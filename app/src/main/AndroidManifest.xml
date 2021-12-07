@@ -12,6 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TiendaComicsApp">
         <activity
+            android:name=".ui.fragments.AddProductActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.TiendaComicsApp.NoActionBar"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.DashboardActivity"
             android:exported="false"
             android:label="@string/app_name" />
