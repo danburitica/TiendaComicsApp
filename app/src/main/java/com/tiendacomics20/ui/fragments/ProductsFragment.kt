@@ -33,8 +33,8 @@ class ProductsFragment : Fragment() {
         _binding = FragmentProductsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        textView.text = "Home"
+//        val textView: TextView = binding.textHome
+//        textView.text = "Productos"
         return root
     }
 

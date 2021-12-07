@@ -18,6 +18,7 @@ import com.tiendacomics20.firestore.FirestoreClass
 import com.tiendacomics20.models.User
 import com.tiendacomics20.utils.Constants
 import com.tiendacomics20.utils.GlideLoader
+import kotlinx.android.synthetic.main.activity_account.*
 import kotlinx.android.synthetic.main.activity_forgot_password.*
 import kotlinx.android.synthetic.main.activity_user_profile.*
 import java.io.IOException
@@ -36,17 +37,42 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
             mUserDetails = intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
         }
 
-        et_name_user_profile.isEnabled = false
-        et_name_user_profile.setText(mUserDetails.firstName)
+        if (mUserDetails.profileCompleted == 0) {
+            tv_title.text = "Completa tu Perfil"
 
-        et_lastname_user_profile.isEnabled = false
-        et_lastname_user_profile.setText(mUserDetails.lastName)
+            et_name_user_profile.isEnabled = false
+            et_name_user_profile.setText(mUserDetails.firstName)
 
-        et_email_user_profile.isEnabled = false
-        et_email_user_profile.setText(mUserDetails.email)
+            et_lastname_user_profile.isEnabled = false
+            et_lastname_user_profile.setText(mUserDetails.lastName)
+
+            et_email_user_profile.isEnabled = false
+            et_email_user_profile.setText(mUserDetails.email)
+        } else {
+            setupActionBar()
+            tv_title.text = "Edita tu Perfil"
+            GlideLoader(this).loadUserPicture(mUserDetails.image, iv_user_photo)
+
+            et_name_user_profile.setText(mUserDetails.firstName)
+            et_lastname_user_profile.setText(mUserDetails.lastName)
+
+            et_email_user_profile.isEnabled = false
+            et_email_user_profile.setText(mUserDetails.email)
+
+            et_mobile_user_profile.setText(mUserDetails.mobile)
+        }
 
         iv_user_photo.setOnClickListener(this)
         btn_save_user_profile.setOnClickListener(this)
+    }
+
+    private fun setupActionBar(){
+        setSupportActionBar(toolbar_user_profile_activity)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_24)
+
+        toolbar_user_profile_activity.setNavigationOnClickListener { onBackPressed() }
     }
 
     override fun onClick(v: View?) {
@@ -90,6 +116,17 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
     private fun updateUserProfileDetails(){
         val userHashMap = HashMap<String, Any>()
+
+        val firstName = et_name_user_profile.text.toString().trim { it <= ' ' }
+        if (firstName != mUserDetails.firstName){
+            userHashMap[Constants.FIRST_NAME] = firstName
+        }
+
+        val lastName = et_lastname_user_profile.text.toString().trim { it <= ' ' }
+        if (lastName != mUserDetails.lastName){
+            userHashMap[Constants.FIRST_NAME] = lastName
+        }
+
         val mobileNumber = et_mobile_user_profile.text.toString().trim { it <= ' ' }
         val address = et_address_user_profile.text.toString().trim { it <= ' ' }
 
@@ -97,10 +134,10 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
             userHashMap[Constants.IMAGE] = mUserProfileImageURL
         }
 
-        if (mobileNumber.isNotEmpty()){
+        if (mobileNumber.isNotEmpty() && mobileNumber != mUserDetails.mobile){
             userHashMap[Constants.MOBILE] = mobileNumber
         }
-        if (address.isNotEmpty()) {
+        if (address.isNotEmpty() && address != mUserDetails.address) {
             userHashMap[Constants.ADDRESS] = address
         }
 
@@ -118,7 +155,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
             Toast.LENGTH_SHORT
         ).show()
 
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, DashboardActivity::class.java))
         finish()
     }
 

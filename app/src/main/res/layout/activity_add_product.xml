@@ -75,7 +75,7 @@
                         android:layout_gravity="end|bottom"
                         android:contentDescription="update image"
                         android:foreground="?attr/selectableItemBackgroundBorderless"
-                        android:padding="10dp"
+                        android:padding="20dp"
                         android:src="@drawable/ic_vector_add_photo" />
                 </androidx.cardview.widget.CardView>
 

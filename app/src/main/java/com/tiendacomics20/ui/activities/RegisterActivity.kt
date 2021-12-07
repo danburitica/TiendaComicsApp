@@ -122,13 +122,16 @@ class RegisterActivity : BaseActivity() {
         }
     }
 
-    fun userRegistrationSuccess(){
+    fun userRegistrationSuccess() {
         hideProgressDialog()
 
         Toast.makeText(
-            this,
+            this@RegisterActivity,
             "¡Su registro fue exitoso!",
             Toast.LENGTH_SHORT
         ).show()
+
+        Firebase.auth.signOut()
+        finish()
     }
 }

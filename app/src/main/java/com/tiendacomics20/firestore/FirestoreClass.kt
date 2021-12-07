@@ -13,6 +13,7 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import com.tiendacomics20.models.Product
 import com.tiendacomics20.models.User
+import com.tiendacomics20.ui.activities.AccountActivity
 import com.tiendacomics20.ui.activities.LoginActivity
 import com.tiendacomics20.ui.activities.RegisterActivity
 import com.tiendacomics20.ui.activities.UserProfileActivity
@@ -77,11 +78,17 @@ class FirestoreClass {
                     is LoginActivity -> {
                         activity.userLoggedInSuccess(user)
                     }
+                    is AccountActivity -> {
+                        activity.userDetailsSuccess(user)
+                    }
                 }
             }
             .addOnFailureListener { e ->
                 when(activity) {
                     is LoginActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                    is AccountActivity -> {
                         activity.hideProgressDialog()
                     }
                 }

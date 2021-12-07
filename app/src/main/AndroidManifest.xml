@@ -12,10 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TiendaComicsApp">
         <activity
-            android:name=".ui.fragments.AddProductActivity"
+            android:name=".ui.activities.AccountActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.TiendaComicsApp.NoActionBar"
-            android:exported="false" />
+            android:theme="@style/Theme.TiendaComicsApp.NoActionBar"/>
+        <activity
+            android:name=".ui.fragments.AddProductActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.TiendaComicsApp.NoActionBar" />
         <activity
             android:name=".ui.activities.DashboardActivity"
             android:exported="false"

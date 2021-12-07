@@ -20,10 +20,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Mi Cuenta"
+            android:text=""
             android:textColor="@color/white"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            android:textSize="20sp" />
 
     </androidx.appcompat.widget.Toolbar>
 
