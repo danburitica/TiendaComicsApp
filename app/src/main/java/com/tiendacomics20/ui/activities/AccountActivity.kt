@@ -32,6 +32,7 @@ class AccountActivity : BaseActivity(), View.OnClickListener {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_24)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         toolbar_account_activity.setNavigationOnClickListener { onBackPressed() }
     }
@@ -50,6 +51,7 @@ class AccountActivity : BaseActivity(), View.OnClickListener {
         tv_account_name.text = "${user.firstName} ${user.lastName}"
         tv_account_email.text = user.email
         tv_account_mobile_number.text = user.mobile
+        tv_account_address.text = user.address
     }
 
     override fun onResume() {

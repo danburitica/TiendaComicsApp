@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
+import androidx.fragment.app.Fragment
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
@@ -18,6 +19,7 @@ import com.tiendacomics20.ui.activities.LoginActivity
 import com.tiendacomics20.ui.activities.RegisterActivity
 import com.tiendacomics20.ui.activities.UserProfileActivity
 import com.tiendacomics20.ui.fragments.AddProductActivity
+import com.tiendacomics20.ui.fragments.ProductsFragment
 import com.tiendacomics20.utils.Constants
 import java.net.URI
 
@@ -186,6 +188,29 @@ class FirestoreClass {
                     "Ocurrió un error mientras se cargaba el producto",
                     e
                 )
+            }
+    }
+
+    fun getProductsList(fragment: Fragment){
+        mFireStore.collection(Constants.PRODUCTS)
+            .whereEqualTo(Constants.USER_ID, getCurrentUserID())
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e("Lista de productos", document.documents.toString())
+                val productsList: ArrayList<Product> = ArrayList()
+
+                for (i in document.documents){
+                    val product = i.toObject(Product::class.java)
+                    product!!.product_id = i.id
+
+                    productsList.add(product)
+                }
+
+                when(fragment){
+                    is ProductsFragment -> {
+                        fragment.successProductsListFromFireStore(productsList)
+                    }
+                }
             }
     }
 }

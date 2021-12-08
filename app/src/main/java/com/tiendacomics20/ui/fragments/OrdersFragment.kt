@@ -27,9 +27,6 @@ class OrdersFragment : Fragment() {
 
         _binding = FragmentOrdersBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-//        val textView: TextView = binding.textNotifications
-//        textView.text = "Compras"
         return root
     }
 

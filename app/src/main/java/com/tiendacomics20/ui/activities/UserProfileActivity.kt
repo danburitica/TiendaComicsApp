@@ -38,7 +38,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         }
 
         if (mUserDetails.profileCompleted == 0) {
-            tv_title.text = "Completa tu Perfil"
+            tv_title_user_profile.text = "Completa tu Perfil"
 
             et_name_user_profile.isEnabled = false
             et_name_user_profile.setText(mUserDetails.firstName)
@@ -50,16 +50,19 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
             et_email_user_profile.setText(mUserDetails.email)
         } else {
             setupActionBar()
-            tv_title.text = "Edita tu Perfil"
+            tv_title_user_profile.text = "Edita tu Perfil"
             GlideLoader(this).loadUserPicture(mUserDetails.image, iv_user_photo)
 
+            et_name_user_profile.isEnabled = false
             et_name_user_profile.setText(mUserDetails.firstName)
+
+            et_lastname_user_profile.isEnabled = false
             et_lastname_user_profile.setText(mUserDetails.lastName)
 
-            et_email_user_profile.isEnabled = false
-            et_email_user_profile.setText(mUserDetails.email)
 
+            et_email_user_profile.setText(mUserDetails.email)
             et_mobile_user_profile.setText(mUserDetails.mobile)
+            et_address_user_profile.setText(mUserDetails.address)
         }
 
         iv_user_photo.setOnClickListener(this)
@@ -71,6 +74,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_24)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         toolbar_user_profile_activity.setNavigationOnClickListener { onBackPressed() }
     }

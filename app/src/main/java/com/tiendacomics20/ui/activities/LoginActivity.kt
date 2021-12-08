@@ -102,10 +102,6 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     fun userLoggedInSuccess(user: User){
         hideProgressDialog()
 
-        /*Log.i("Nombre: ", user.firstName)
-        Log.i("Apellido: ", user.lastName)
-        Log.i("Email: ", user.email)*/
-
         if (user.profileCompleted == 0){
             val intent = Intent(this, UserProfileActivity::class.java)
             intent.putExtra(Constants.EXTRA_USER_DETAILS, user)

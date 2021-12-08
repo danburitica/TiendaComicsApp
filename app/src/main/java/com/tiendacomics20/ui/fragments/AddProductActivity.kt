@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -20,9 +19,7 @@ import com.tiendacomics20.ui.activities.BaseActivity
 import com.tiendacomics20.utils.Constants
 import com.tiendacomics20.utils.GlideLoader
 import kotlinx.android.synthetic.main.activity_add_product.*
-import kotlinx.android.synthetic.main.activity_user_profile.*
 import java.io.IOException
-import java.util.jar.Manifest
 
 class AddProductActivity : BaseActivity(), View.OnClickListener {
 
@@ -44,6 +41,7 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_24)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         toolbar_add_product_activity.setNavigationOnClickListener { onBackPressed() }
     }

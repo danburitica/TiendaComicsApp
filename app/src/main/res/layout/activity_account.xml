@@ -34,9 +34,9 @@
 
                 <TextView
                     android:id="@+id/tv_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:text="Mi Cuenta"
                     android:textColor="@color/white"
                     android:textSize="20sp"
@@ -118,7 +118,18 @@
             android:textSize="18sp"
             tools:text="" />
 
-        <LinearLayout
+        <com.tiendacomics20.utils.TCTextViewRegular
+            android:id="@+id/tv_account_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_account_mobile_number"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:text="" />
+
+        <!--<LinearLayout
             android:id="@+id/ll_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -146,13 +157,13 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_chevron_right_24" />
 
-        </LinearLayout>
+        </LinearLayout>-->
 
         <com.tiendacomics20.utils.TCButton
             android:id="@+id/btn_logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ll_address"
+            android:layout_below="@id/tv_account_address"
             android:layout_gravity="center"
             android:layout_marginStart="32dp"
             android:layout_marginTop="35dp"
