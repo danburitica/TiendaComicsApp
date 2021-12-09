@@ -19,6 +19,7 @@ import com.tiendacomics20.ui.activities.LoginActivity
 import com.tiendacomics20.ui.activities.RegisterActivity
 import com.tiendacomics20.ui.activities.UserProfileActivity
 import com.tiendacomics20.ui.fragments.AddProductActivity
+import com.tiendacomics20.ui.fragments.DashboardFragment
 import com.tiendacomics20.ui.fragments.ProductsFragment
 import com.tiendacomics20.utils.Constants
 import java.net.URI
@@ -211,6 +212,28 @@ class FirestoreClass {
                         fragment.successProductsListFromFireStore(productsList)
                     }
                 }
+            }
+    }
+
+    fun getDashboardItemsList(fragment: DashboardFragment){
+        mFireStore.collection(Constants.PRODUCTS)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e(fragment.javaClass.simpleName, document.documents.toString())
+                val productsList: ArrayList<Product> = ArrayList()
+
+                for (i in document.documents){
+                    val product = i.toObject(Product::class.java)
+                    product!!.product_id = i.id
+
+                    productsList.add(product)
+                }
+
+                fragment.successDashboardItemsList(productsList)
+            }
+            .addOnFailureListener { e ->
+                fragment.hideProgressDialog()
+                Log.e(fragment.javaClass.simpleName, "Ocurrió un error mientras se cargaban los productos")
             }
     }
 }

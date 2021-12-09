@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/navigation_products"
         android:name="com.tiendacomics20.ui.fragments.ProductsFragment"
-        android:label="Explorar"
+        android:label="Publicaciones"
         tools:layout="@layout/fragment_products" />
 
     <fragment
