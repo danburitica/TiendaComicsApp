@@ -29,7 +29,7 @@ open class MyProductsListAdapter (private val context: Context, private var list
             GlideLoader(context).loadProductPicture(model.image, holder.itemView.iv_item_list)
             holder.itemView.tv_user_item_list.text = model.user_name
             holder.itemView.tv_name_item_list.text = model.title
-            holder.itemView.tv_price_item_list.text = model.price
+            holder.itemView.tv_price_item_list.text = "$ ${model.price}"
         }
     }
 
