@@ -6,31 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".ui.activities.LoginActivity">
 
-    <FrameLayout
-        android:id="@+id/fl_header_image"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#A6243C"
-            android:contentDescription="image"
-            android:src="@drawable/logo" />
-    </FrameLayout>
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/fl_header_image"
-        tools:layout_editor_absoluteX="1dp">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:id="@+id/fl_header_image"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#A6243C"
+                    android:contentDescription="image"
+                    android:src="@drawable/logo" />
+            </FrameLayout>
 
             <com.tiendacomics20.utils.TCTextViewBold
                 android:id="@+id/tv_title"
@@ -43,8 +45,9 @@
                 android:textColor="@color/black"
                 android:textSize="35sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/fl_header_image" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_email"
