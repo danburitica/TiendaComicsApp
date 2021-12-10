@@ -39,7 +39,7 @@ open class DashboardItemsListAdapter(private val context: Context, private var l
         if (holder is MyViewHolder) {
 
             GlideLoader(context).loadProductPicture(model.image, holder.itemView.iv_item_dashboard)
-            holder.itemView.tv_user_item_dashboard.text = model.user_name
+            holder.itemView.tv_user_item_dashboard.text = "Publicado por: ${model.user_name}"
             holder.itemView.tv_name_item_dashboard.text = model.title
             holder.itemView.tv_price_item_dashboard.text = "$ ${model.price}"
 

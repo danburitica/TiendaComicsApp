@@ -53,7 +53,7 @@
                 android:layout_margin="20dp"
                 android:background="#B3B3B3"
                 android:contentDescription="product image"
-                android:scaleType="centerCrop" />
+                android:scaleType="fitXY" />
 
             <LinearLayout
                 android:id="@+id/ll_item_dashboard_horizontal_two"
