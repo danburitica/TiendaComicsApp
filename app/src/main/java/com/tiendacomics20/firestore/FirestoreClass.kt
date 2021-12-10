@@ -14,11 +14,7 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import com.tiendacomics20.models.Product
 import com.tiendacomics20.models.User
-import com.tiendacomics20.ui.activities.AccountActivity
-import com.tiendacomics20.ui.activities.LoginActivity
-import com.tiendacomics20.ui.activities.RegisterActivity
-import com.tiendacomics20.ui.activities.UserProfileActivity
-import com.tiendacomics20.ui.activities.AddProductActivity
+import com.tiendacomics20.ui.activities.*
 import com.tiendacomics20.ui.fragments.DashboardFragment
 import com.tiendacomics20.ui.fragments.ProductsFragment
 import com.tiendacomics20.utils.Constants
@@ -248,6 +244,23 @@ class FirestoreClass {
 
                 Log.e(fragment.requireActivity().javaClass.simpleName,
                 "Ocurrió un error mientras se eliminaba el producto", e)
+            }
+    }
+
+    fun getProductDetails(activity: ProductDetailsActivity, productId: String){
+        mFireStore.collection(Constants.PRODUCTS)
+            .document(productId)
+            .get()
+            .addOnSuccessListener { document ->
+                val product = document.toObject(Product::class.java)
+                if(product != null){
+                    activity.productDetailsSuccess(product)
+                }
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressDialog()
+
+                Log.e(activity.javaClass.simpleName, "Ocurrió un error mientras se obtenía el detalle del producto")
             }
     }
 }

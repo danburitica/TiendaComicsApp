@@ -13,8 +13,10 @@ import com.tiendacomics20.databinding.FragmentDashboardBinding
 import com.tiendacomics20.firestore.FirestoreClass
 import com.tiendacomics20.models.Product
 import com.tiendacomics20.ui.activities.AccountActivity
+import com.tiendacomics20.ui.activities.ProductDetailsActivity
 import com.tiendacomics20.ui.adapters.DashboardItemsListAdapter
 import com.tiendacomics20.ui.adapters.MyProductsListAdapter
+import com.tiendacomics20.utils.Constants
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import kotlinx.android.synthetic.main.fragment_products.*
 

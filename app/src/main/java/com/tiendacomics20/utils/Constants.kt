@@ -32,6 +32,8 @@ object Constants {
     //Cloud Storage
     const val USER_PROFILE_IMAGE: String = "User_Profile_Image"
 
+    const val EXTRA_PRODUCT_ID: String = "extra_product_id"
+
     fun showImageChooser(activity: Activity){
         val galleryIntent = Intent(
             Intent.ACTION_PICK,

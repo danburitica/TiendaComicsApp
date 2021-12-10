@@ -129,36 +129,6 @@
             android:textSize="18sp"
             tools:text="" />
 
-        <!--<LinearLayout
-            android:id="@+id/ll_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_account_mobile_number"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/item_yellow_border_background"
-            android:foreground="?attr/selectableItemBackground"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
-            <com.tiendacomics20.utils.TCTextViewRegular
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:text="Dirección"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_chevron_right_24" />
-
-        </LinearLayout>-->
-
         <com.tiendacomics20.utils.TCButton
             android:id="@+id/btn_logout"
             android:layout_width="match_parent"
