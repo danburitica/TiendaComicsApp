@@ -17,7 +17,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.TiendaComicsApp.NoActionBar"/>
         <activity
-            android:name=".ui.fragments.AddProductActivity"
+            android:name=".ui.activities.AddProductActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.TiendaComicsApp.NoActionBar" />

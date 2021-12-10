@@ -12,6 +12,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
+        android:layout_marginBottom="10dp"
         android:elevation="50dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,15 +40,6 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <com.tiendacomics20.utils.TCTextViewRegular
-                    android:id="@+id/tv_name_item_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="Product name"
-                    android:textSize="20sp" />
-
                 <LinearLayout
                     android:id="@+id/ll_item_list_horizontal_one"
                     android:layout_width="match_parent"
@@ -55,14 +47,14 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.tiendacomics20.utils.TCTextViewBold
-                        android:id="@+id/tv_price_item_list"
+                    <com.tiendacomics20.utils.TCTextViewRegular
+                        android:id="@+id/tv_name_item_list"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:text="Price"
-                        android:textSize="18sp" />
+                        android:text="Product name"
+                        android:textSize="20sp" />
 
                     <ImageButton
                         android:id="@+id/ib_delete_product"
@@ -73,6 +65,15 @@
                         android:foreground="?attr/selectableItemBackgroundBorderless"
                         android:src="@drawable/ic_vector_delete" />
                 </LinearLayout>
+
+                <com.tiendacomics20.utils.TCTextViewBold
+                    android:id="@+id/tv_price_item_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Price"
+                    android:textSize="18sp" />
 
             </LinearLayout>
         </LinearLayout>

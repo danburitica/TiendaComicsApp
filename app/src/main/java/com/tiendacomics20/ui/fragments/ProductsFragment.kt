@@ -2,15 +2,15 @@ package com.tiendacomics20.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import android.widget.TextView
-import androidx.fragment.app.Fragment
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tiendacomics20.R
 import com.tiendacomics20.databinding.FragmentProductsBinding
 import com.tiendacomics20.firestore.FirestoreClass
 import com.tiendacomics20.models.Product
+import com.tiendacomics20.ui.activities.AddProductActivity
 import com.tiendacomics20.ui.adapters.MyProductsListAdapter
 import kotlinx.android.synthetic.main.fragment_products.*
 
@@ -28,6 +28,45 @@ class ProductsFragment : BaseFragment() {
         setHasOptionsMenu(true)
     }
 
+    private fun showAlertDialogToDeleteProduct(productID: String) {
+
+        val builder = AlertDialog.Builder(requireActivity())
+        builder.setTitle("Eliminar")
+        builder.setMessage("¿Está seguro que quiere eliminar el producto?")
+        builder.setIcon(R.drawable.ic_caution)
+
+        builder.setPositiveButton("Sí") { dialogInterface, _ ->
+
+            showProgressDialog("Por favor espera...")
+            FirestoreClass().deleteProduct(this, productID)
+            dialogInterface.dismiss()
+        }
+
+        builder.setNegativeButton("No") { dialogInterface, _ ->
+            dialogInterface.dismiss()
+        }
+
+        val alertDialog: AlertDialog = builder.create()
+        alertDialog.setCancelable(false)
+        alertDialog.show()
+    }
+
+    fun deleteProduct(productID: String) {
+        showAlertDialogToDeleteProduct(productID)
+    }
+
+    fun productDeleteSuccess() {
+        hideProgressDialog()
+
+        Toast.makeText(
+            requireActivity(),
+            "¡El producto ha sido eliminado con éxito!",
+            Toast.LENGTH_SHORT
+        ).show()
+
+        getProductsListFromFireStore()
+    }
+
     fun successProductsListFromFireStore(productsList: ArrayList<Product>){
         hideProgressDialog()
 
@@ -37,7 +76,7 @@ class ProductsFragment : BaseFragment() {
 
             rv_explore_products.layoutManager = LinearLayoutManager(activity)
             rv_explore_products.setHasFixedSize(true)
-            val adapterProducts = MyProductsListAdapter(requireActivity(), productsList)
+            val adapterProducts = MyProductsListAdapter(requireActivity(), productsList, this)
             rv_explore_products.adapter = adapterProducts
         }else{
             rv_explore_products.visibility = View.GONE

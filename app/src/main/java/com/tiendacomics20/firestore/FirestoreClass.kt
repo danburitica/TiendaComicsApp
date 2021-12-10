@@ -18,11 +18,10 @@ import com.tiendacomics20.ui.activities.AccountActivity
 import com.tiendacomics20.ui.activities.LoginActivity
 import com.tiendacomics20.ui.activities.RegisterActivity
 import com.tiendacomics20.ui.activities.UserProfileActivity
-import com.tiendacomics20.ui.fragments.AddProductActivity
+import com.tiendacomics20.ui.activities.AddProductActivity
 import com.tiendacomics20.ui.fragments.DashboardFragment
 import com.tiendacomics20.ui.fragments.ProductsFragment
 import com.tiendacomics20.utils.Constants
-import java.net.URI
 
 class FirestoreClass {
 
@@ -234,6 +233,21 @@ class FirestoreClass {
             .addOnFailureListener { e ->
                 fragment.hideProgressDialog()
                 Log.e(fragment.javaClass.simpleName, "Ocurrió un error mientras se cargaban los productos")
+            }
+    }
+
+    fun deleteProduct(fragment: ProductsFragment, productId: String){
+        mFireStore.collection(Constants.PRODUCTS)
+            .document(productId)
+            .delete()
+            .addOnSuccessListener {
+                fragment.productDeleteSuccess()
+            }
+            .addOnFailureListener { e ->
+                fragment.hideProgressDialog()
+
+                Log.e(fragment.requireActivity().javaClass.simpleName,
+                "Ocurrió un error mientras se eliminaba el producto", e)
             }
     }
 }

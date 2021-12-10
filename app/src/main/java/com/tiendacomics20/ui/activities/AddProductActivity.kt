@@ -1,4 +1,4 @@
-package com.tiendacomics20.ui.fragments
+package com.tiendacomics20.ui.activities
 
 import android.app.Activity
 import android.content.Context
@@ -15,7 +15,6 @@ import androidx.core.content.ContextCompat
 import com.tiendacomics20.R
 import com.tiendacomics20.firestore.FirestoreClass
 import com.tiendacomics20.models.Product
-import com.tiendacomics20.ui.activities.BaseActivity
 import com.tiendacomics20.utils.Constants
 import com.tiendacomics20.utils.GlideLoader
 import kotlinx.android.synthetic.main.activity_add_product.*
